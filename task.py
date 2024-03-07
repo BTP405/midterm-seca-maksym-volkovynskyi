@@ -27,4 +27,10 @@ class Task:
             status (str): The status of the task.
             project (Project): The project associated with the task.
         """
+        self.task_id = task_id
+        self.description = description
+        self.deadline =  deadline
+        self.status = status
+        self.project = project
         pass
+

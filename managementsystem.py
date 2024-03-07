@@ -24,6 +24,9 @@ class ManagementSystem:
         """
         Initialize a ManagementSystem object.
         """
+        self.employees = []
+        self.projects = []
+        self.tasks = []
         pass
 
     def add_employee(self, employee):
@@ -33,6 +36,7 @@ class ManagementSystem:
         Args:
             employee (Employee): The employee to be added.
         """
+        self.employees.append(employee)
         pass
 
     def remove_employee(self, emp_id):
@@ -42,6 +46,8 @@ class ManagementSystem:
         Args:
             emp_id (str): The ID of the employee to be removed.
         """
+        newEmps = [emp for emp in self.employees if emp.emp_id != emp_id]
+        self.employees = newEmps
         pass
 
     def add_project(self, project):
@@ -51,6 +57,7 @@ class ManagementSystem:
         Args:
             project (Project): The project to be added.
         """
+        self.projects.append(project)
         pass
 
     def add_task(self, task):
@@ -60,6 +67,7 @@ class ManagementSystem:
         Args:
             task (Task): The task to be added.
         """
+        self.tasks.append(task)
         pass
 
     def assign_employee_to_project(self, emp_id, project_id):
@@ -73,4 +81,19 @@ class ManagementSystem:
         Raises:
             ValueError: If employee or project is not found.
         """
+        employee = None
+        for emp in self.employees:
+            if emp.emp_id == emp_id:
+                employee = emp
+                break
+        if not employee:
+            raise ValueError('Employee Not Found')
+        project = None
+        for proj in self.projects:
+            if proj.project_id == project_id:
+                project = proj
+                break
+        if not project:
+            raise ValueError('Project Not Found')
+        project.assign_employee(employee)
         pass

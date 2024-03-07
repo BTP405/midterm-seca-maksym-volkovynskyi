@@ -25,4 +25,8 @@ class Employee:
             role (str): The role of the employee.
             salary (float): The salary of the employee.
         """
+        self.name = name
+        self.emp_id = emp_id
+        self.role = role
+        self.salary = salary
         pass
